@@ -6,30 +6,17 @@ document.addEventListener('DOMContentLoaded', function() {
     const contractCopyTop = document.getElementById('contractCopyTop');
     const contractText = document.getElementById('contractText');
     
-    // Copy button functionality for both buttons
+        // Copy button functionality for both buttons
     function copyContractText(button) {
-        const textToCopy = contractText.textContent;
+        // Since contract address is coming soon, just show a message
+        const originalText = button.textContent;
+        button.textContent = 'coming soon!';
+        button.style.backgroundColor = '#4CAF50';
         
-        // Use modern clipboard API if available
-        if (navigator.clipboard && window.isSecureContext) {
-                            navigator.clipboard.writeText(textToCopy).then(function() {
-                    // Visual feedback
-                    const originalText = button.textContent;
-                    button.textContent = 'copied!';
-                    button.style.backgroundColor = '#4CAF50';
-                    
-                    setTimeout(function() {
-                        button.textContent = 'click to copy contract address';
-                        button.style.backgroundColor = '#ff6666';
-                    }, 2000);
-            }).catch(function(err) {
-                console.error('Failed to copy text: ', err);
-                fallbackCopyTextToClipboard(textToCopy, button);
-            });
-        } else {
-            // Fallback for older browsers
-            fallbackCopyTextToClipboard(textToCopy, button);
-        }
+        setTimeout(function() {
+            button.textContent = 'contract address coming soon';
+            button.style.backgroundColor = '#ff6666';
+        }, 2000);
     }
     
     if (copyButton) {
@@ -130,6 +117,35 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 1000 + (index * 200));
         });
     }
+    
+    // Countdown functionality
+    function updateCountdown() {
+        const targetDate = new Date('2025-08-01T19:00:00Z'); // August 1, 2025 at 7 PM UTC
+        const now = new Date();
+        const timeDifference = targetDate - now;
+        
+        if (timeDifference > 0) {
+            const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+            
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+        } else {
+            // Countdown has ended
+            document.getElementById('days').textContent = '00';
+            document.getElementById('hours').textContent = '00';
+            document.getElementById('minutes').textContent = '00';
+            document.getElementById('seconds').textContent = '00';
+        }
+    }
+    
+    // Update countdown every second
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
     
     // Add some personality to the page load
     setTimeout(function() {
