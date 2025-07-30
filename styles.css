@@ -1,0 +1,350 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Courier New', monospace;
+    background-color: #faf8f5;
+    color: #2c2c2c;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header Section */
+.header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.blobby-image {
+    margin-bottom: 20px;
+}
+
+.blobby-image {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.blobby-image img {
+    width: 200px;
+    height: 200px;
+    display: block;
+    margin: 0 auto;
+    filter: drop-shadow(0 4px 8px rgba(44, 44, 44, 0.2));
+}
+
+.floating-blobby {
+    width: 40px;
+    height: 40px;
+    opacity: 0;
+    transform: translateY(20px) scale(0.8);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    animation: float 3s ease-in-out infinite;
+}
+
+.blobby-left {
+    animation-delay: 0s;
+}
+
+.blobby-right {
+    animation-delay: 0.5s;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+        opacity: 0.8;
+    }
+    50% {
+        transform: translateY(-10px) rotate(5deg);
+        opacity: 1;
+    }
+}
+
+.title {
+    font-size: 2.5rem;
+    font-weight: normal;
+    margin-bottom: 30px;
+    color: #2c2c2c;
+    text-transform: lowercase;
+    letter-spacing: 1px;
+}
+
+/* Social Icons */
+.social-icons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 200px;
+    margin: 0 auto;
+    gap: 20px;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border: 2px solid #2c2c2c;
+    border-radius: 50%;
+    background-color: #faf8f5;
+    color: #2c2c2c;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    padding: 10px;
+}
+
+.social-link:hover {
+    background-color: #ff6666;
+    color: #faf8f5;
+    transform: scale(1.1);
+}
+
+.x-icon, .arena-icon {
+    width: 24px;
+    height: 24px;
+}
+
+/* Description */
+.description {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 0 20px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.description p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #2c2c2c;
+    text-transform: lowercase;
+    max-width: 100%;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+
+/* Contract Copy Button (Top Left) */
+.contract-copy-top {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background-color: #ff6666;
+    color: #faf8f5;
+    border: 2px solid #2c2c2c;
+    border-radius: 5px;
+    padding: 8px 12px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: lowercase;
+    font-family: inherit;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.contract-copy-top::before {
+    content: "📄";
+    font-size: 0.9rem;
+}
+
+.contract-copy-top:hover {
+    background-color: #e55a5a;
+    transform: scale(1.05);
+}
+
+/* Contract Section */
+.contract-section {
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.contract-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    padding: 20px;
+    border: 2px solid #2c2c2c;
+    border-radius: 10px;
+    background-color: #faf8f5;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.contract-label {
+    font-size: 1rem;
+    color: #2c2c2c;
+    text-transform: lowercase;
+}
+
+.contract-value {
+    font-size: 1rem;
+    color: #2c2c2c;
+    font-weight: bold;
+    text-transform: lowercase;
+}
+
+.copy-button {
+    background-color: #ff6666;
+    color: #faf8f5;
+    border: 2px solid #2c2c2c;
+    border-radius: 5px;
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: lowercase;
+    font-family: inherit;
+}
+
+.copy-button:hover {
+    background-color: #e55a5a;
+    transform: scale(1.05);
+}
+
+/* Blob Button */
+.blob-button-section {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.blob-button {
+    background-color: #ff6666;
+    color: #faf8f5;
+    border: 3px solid #2c2c2c;
+    border-radius: 25px;
+    padding: 15px 40px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: lowercase;
+    font-family: inherit;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(44, 44, 44, 0.2);
+    min-width: 150px;
+}
+
+.blob-button:hover {
+    background-color: #e55a5a;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(44, 44, 44, 0.3);
+}
+
+.blob-button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(44, 44, 44, 0.2);
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #2c2c2c;
+}
+
+.footer p {
+    color: #666;
+    font-size: 0.9rem;
+    text-transform: lowercase;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    .container {
+        padding: 10px;
+    }
+    
+    .title {
+        font-size: 2rem;
+    }
+    
+    .blobby-image img {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .floating-blobby {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .social-icons {
+        max-width: 150px;
+        gap: 15px;
+    }
+    
+    .social-link {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .x-icon, .arena-icon {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .description p {
+        font-size: 1rem;
+    }
+    
+    .contract-container {
+        flex-direction: column;
+        gap: 10px;
+        padding: 15px;
+    }
+    
+    .blob-button {
+        font-size: 1.3rem;
+        padding: 12px 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .title {
+        font-size: 1.8rem;
+    }
+    
+    .blobby-image img {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .floating-blobby {
+        width: 25px;
+        height: 25px;
+    }
+    
+    .description p {
+        font-size: 0.95rem;
+    }
+    
+    .blob-button {
+        font-size: 1.2rem;
+        padding: 10px 25px;
+    }
+} 
