@@ -8,15 +8,28 @@ document.addEventListener('DOMContentLoaded', function() {
     
         // Copy button functionality for both buttons
     function copyContractText(button) {
-        // Since contract address is coming soon, just show a message
-        const originalText = button.textContent;
-        button.textContent = 'coming soon!';
-        button.style.backgroundColor = '#4CAF50';
+        const contractAddress = '0xe6fe5ba7ab8672900a2e0c031da3df121495224c';
         
-        setTimeout(function() {
-            button.textContent = 'contract address coming soon';
-            button.style.backgroundColor = '#ff6666';
-        }, 2000);
+        // Use modern clipboard API if available
+        if (navigator.clipboard && window.isSecureContext) {
+            navigator.clipboard.writeText(contractAddress).then(function() {
+                // Visual feedback
+                const originalText = button.textContent;
+                button.textContent = 'copied!';
+                button.style.backgroundColor = '#4CAF50';
+                
+                setTimeout(function() {
+                    button.textContent = 'click to copy contract address';
+                    button.style.backgroundColor = '#ff6666';
+                }, 2000);
+            }).catch(function(err) {
+                console.error('Failed to copy text: ', err);
+                fallbackCopyTextToClipboard(contractAddress, button);
+            });
+        } else {
+            // Fallback for older browsers
+            fallbackCopyTextToClipboard(contractAddress, button);
+        }
     }
     
     if (copyButton) {
@@ -46,7 +59,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const successful = document.execCommand('copy');
             if (successful) {
                 // Visual feedback
-                const originalText = button.textContent;
                 button.textContent = 'copied!';
                 button.style.backgroundColor = '#4CAF50';
                 
